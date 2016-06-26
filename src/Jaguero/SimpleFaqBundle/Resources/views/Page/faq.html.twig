@@ -1,0 +1,18 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block content %}
+
+    <section class="page">
+        <div class="page-header">
+            <h1>{{ page.name }}</h1>
+            <div>
+                {{ page.description }}
+            </div>
+        </div>
+        <div class="container">
+            {{ render(controller('JagueroSimpleFaqBundle:Widget:allEnabled')) }}
+        </div>
+
+    </section>
+
+{% endblock %}

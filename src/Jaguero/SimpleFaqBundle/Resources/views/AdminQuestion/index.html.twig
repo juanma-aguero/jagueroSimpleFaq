@@ -1,0 +1,45 @@
+{% extends "FlowcodeDashboardBundle:Default:layout.html.twig" %}
+
+{% block title %}{{ '%entity% list'|trans({'%entity%': 'Question'}, 'Question') }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>
+            {{ '%entity% list'|trans({'%entity%': 'Question'}, 'Question') }}
+        </h1>
+    </section>
+    <section class="content">    
+        <div class="box">
+            <div class="box-header">
+                <div class="box-tools pull-right">                    <a class="btn btn-link btn-sm" href={{ path('admin_question_new') }}>
+                        <i class="fa fa-plus"></i> {{ 'Create a new %entity%'|trans({'%entity%': 'Question'}, 'Question') }}
+                    </a>
+                            </div>
+            </div>
+            <div class="box-body">    
+            <table class="table table-hover records_list table-condensed">
+                <thead>
+                    <tr>                        <th scope="col">{{ knp_pagination_sortable(paginator, 'Title', 'q.title') }}</th>                        <th scope="col">{{ knp_pagination_sortable(paginator, 'Answer', 'q.answer') }}</th>                        <th scope="col">{{ knp_pagination_sortable(paginator, 'Enabled', 'q.enabled') }}</th>                        <th scope="col">{{ knp_pagination_sortable(paginator, 'Position', 'q.position') }}</th>                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in paginator %}
+                        <tr>
+                                                             
+                                <td><a href="{{ path('admin_question_show', {id: question.id}) }}">{{ question.title }}</a></td>
+                                <td>{{ question.answer }}</td>
+                                <td>{% if question.enabled %}<i class="fa fa-check-square-o"></i>{% else %}<i class="fa fa-square-o"></i>{% endif %}</td>
+                                <td>{{ question.position }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            {{ knp_pagination_render(paginator) }}
+            </div>
+        <div class="box-footer">
+
+        </div>
+        
+    </section>        
+
+{% endblock %}

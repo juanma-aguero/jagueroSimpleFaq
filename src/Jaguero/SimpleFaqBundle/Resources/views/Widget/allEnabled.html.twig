@@ -1,0 +1,12 @@
+{% for question in questions %}
+    <div class="row jsq-question">
+
+        <h3 class="jsq-question-title">
+            {{ question.title }}
+        </h3>
+        <div class="jsq-question-body">
+            {{ question.answer|raw }}
+        </div>
+
+    </div>
+{% endfor %}

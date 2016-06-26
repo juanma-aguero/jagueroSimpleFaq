@@ -1,0 +1,7 @@
+services:
+
+    jaguero.simplefaq.listplugins_eventsubscriber:
+        class: Jaguero\SimpleFaqBundle\Event\ListPluginsSubscriber
+        arguments: ['@router', '@translator']
+        tags:
+            - { name: kernel.event_subscriber }
